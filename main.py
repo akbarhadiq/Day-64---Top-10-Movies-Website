@@ -2,7 +2,7 @@ from flask import Flask, render_template, redirect, url_for, request
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 import requests
-from forms import EditForm
+from forms import EditForm, AddForm
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
@@ -84,6 +84,12 @@ def delete():
     # commit database
     db.session.commit()
     return redirect(url_for('home'))
+
+
+@app.route("/add", methods=["POST", "GET"])
+def add():
+    form = AddForm()
+    return render_template("add.html", form=form)
 
 
 if __name__ == '__main__':

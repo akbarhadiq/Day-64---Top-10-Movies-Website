@@ -7,3 +7,7 @@ class EditForm(FlaskForm):
     rating = FloatField("Rating", validators=[DataRequired()])
     review = StringField("Review", validators=[DataRequired(),Length(min=1, max=500, message="review must be less than 500 characters")])
     submit = SubmitField("Done")
+
+class AddForm(FlaskForm):
+    title = StringField("Movie Title", validators=[DataRequired(), Length(min=1, max=250)])
+    submit = SubmitField("Add Movie")
